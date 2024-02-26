@@ -11,28 +11,36 @@ Vous allez être amenés à utiliser la librairie python **pygame** pour ceci il
 nix-shell -p python311Packages.pygame
 ```
 
-Vos outils:
+### Vos outils:
 
 Vous disposez d'une classe Pacman:
-les attributs que vous utiliserez sont:
--self.size -> le nombre de pixel par case
--self.speed -> la vitesse du Pacman
--self.life -> les points de vie
--self.dt -> le delta de temps (expliqué plus bas)
--self.pos.x -> la position sur l'axe des abscisses
--self.pos.y -> la position sur l'axe des ordonnées
--self.score -> le score
--self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse)
--self.timer -> la durée de récupération du power up
+les attributs que vous utiliserez sont:\
+-self.size -> le nombre de pixel par case\
+-self.speed -> la vitesse du Pacman\
+-self.life -> les points de vie\
+-self.dt -> le delta de temps (expliqué plus bas)\
+-self.pos.x -> la position sur l'axe des abscisses\
+-self.pos.y -> la position sur l'axe des ordonnées\
+-self.score -> le score\
+-self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse)\
+-self.timer -> la durée de récupération du power up\
+
+La carte se présente sous la forme de deux matrices:
+La première : self.maze.maze -> ce tableau est peuplé de 1 et de 0, les 1 sont des murs et les 0 sont des sols.
+ne vous laissez pas intimider par le terme matrice, c'est très simple: pour accéder à une case il suffit d'utiliser la synthaxe suivante:\
+prenons la case en i = 5 et en j = 7 dans le maze:
+self.maze.maze[7][5]\
+(si vous n'êtes pas sûr d'avoir compris certaines notions, demandez nous, on ne mord pas)\
+
+Tous ces attributs sont des variables que vous devrez modifier pour faire fonctionner le jeu
 
 ## Partie 1: src/pacman.py
 
 ### Le mouvement
 
 Pour commencer, voyons le mouvement. Vous allez devoir implementer le déplacement de Pacman dans 4 directions.
-Ici nous vous proposons de diviser les différents mouvements en sous fonction pour la lisibilité du code (vous pouvez rajouter autant de sous fonction que vous désirez pour alléger le code)
-
-pour adapter le mouvement a la fréquence d'image et que la puissance du PC n'impact pas la rapidité du jeu nous utilisons une variable **dt** qui est un delta du temps permettant de synchroniser la fréquence d'image avec le temps qui s'écoule.
+Ici nous vous proposons de diviser les différents mouvements en sous fonction pour la lisibilité du code (vous pouvez rajouter autant de sous fonction que vous désirez pour alléger le code). Ici vous devrzez donc manipuler self.pos.x et self.pos.y.\
+Pour adapter le mouvement a la fréquence d'image et que la puissance du PC n'impact pas la rapidité du jeu nous utilisons une variable **dt** qui est un delta du temps permettant de synchroniser la fréquence d'image avec le temps qui s'écoule.
 
 pour utiliser ce delta, il suffit de multiplier la variable ajoutée à votre position par **dt** comme ceci:
 
@@ -42,7 +50,7 @@ self.pos.x += self.speed * self.dt
 
 Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonnées d'arrivé puis de mettre à jour la position du Pacman. De cette manière vous pourrez par la suite vérifier si votre position est valide ou non (pour les collisions avec les murs).
 
-La formule pour convertir les déplacements : nouveau_x = vieux_x / taille_case
+La formule pour convertir les déplacements : index = vieux_x / taille_case
 
 
 Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions.
