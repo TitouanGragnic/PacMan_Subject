@@ -59,7 +59,7 @@ Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonné
 Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions. Vous allez devoir utiliser self.maze.maze pour cela vous allez devoir convertir les coordonnées du pacman pour savoir où vous vous situez dans le labyrinthe.\
 La formule pour convertir les déplacements: index = vieux_x / taille_case
 
-Maintenant que vous avez prit vos marques, voicis quelques fonctions que vous devez recoder afin de compléter le code du jeu:
+Maintenant que vous avez prit vos marques, voici quelques fonctions que vous devez recoder afin de compléter le code du jeu:
 
 ### PacMan.kill()
 Cette fonction sera appelée quand le Pac-Man est touché.\
