@@ -23,7 +23,7 @@ les attributs que vous utiliserez sont:\
 -self.pos.y -> la position sur l'axe des ordonnées\
 -self.score -> le score\
 -self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse)\
--self.timer -> la durée de récupération du power up\
+-self.timer -> la durée de récupération du power up
 
 La carte se présente sous la forme de deux matrices:
 La première : self.maze.maze -> ce tableau est peuplé de 1 et de 0, les 1 sont des murs et les 0 sont des sols.
