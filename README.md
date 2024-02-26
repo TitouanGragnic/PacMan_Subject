@@ -22,7 +22,7 @@ les attributs que vous utiliserez sont:\
 -self.pos.x -> la position sur l'axe des abscisses\
 -self.pos.y -> la position sur l'axe des ordonnées\
 -self.score -> le score\
--self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse)\
+-self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse: *True*/*False*)\
 -self.timer -> la durée de récupération du power up
 
 La carte se présente sous la forme de deux matrices:
@@ -56,26 +56,27 @@ self.pos.x += self.speed * self.dt
 
 Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonnées d'arrivé puis de mettre à jour la position du Pacman. De cette manière vous pourrez par la suite vérifier si votre position est valide ou non (pour les collisions avec les murs).
 
-La formule pour convertir les déplacements : index = vieux_x / taille_case
+Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions. Vous allez devoir utiliser self.maze.maze pour cela vous allez devoir convertir les coordonnées du pacman pour savoir où vous vous situez dans le labyrinthe.\
+La formule pour convertir les déplacements: index = vieux_x / taille_case
 
-
-Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions.
-
+Maintenant que vous avez prit vos marques, voicis quelques fonctions que vous devez recoder afin de compléter le code du jeu:
 
 ### PacMan.kill()
-Cette fonction est appelée quand le Pac-Man est tu et doit réduire la vie de 1, réinitialiser la position à celle de départ.
+Cette fonction sera appelée quand le Pac-Man est touché.\
+La Pacman perd 1 point de vie et il revient à la position de départ (donnée par self.start_pos()).
 
 ### PacMan.eat()
-Cette fonction permet de manger les petits points blancs afin de gagner des points, il faut donc vérifier si l'on peut manger le point et ensuite ajouter les points.
-s'il s d'un point spécial il faut mettre le Pac-Man en mode Power *True*
+Cette fonction permet de manger les petits points blancs afin de gagner des points.\
+il faut donc d'abord vérifier si il y a un point à la position du Pacman (dans self.maze.point , voir plus haut) et augmenter le score.
+s'il s'agit d'un power up il faut mettre le Pac-Man en mode Power *True*.
 
 ### PacMan.Power()
-Cette fonction doit permettre à Pac-Man de garder son powerup durant environ dix secondes. Pour ce faire vous pouvez utiliser la librairie time de python et de la fonction timer de cette librairie.
+Cette fonction doit permettre à Pac-Man de garder son powerup durant environ dix secondes. Pour ce faire vous pouvez utiliser la librairie time de python et de la fonction timer de cette librairie (demandez des précisions à Titouan si c'est flou (le grand avec des cheveux longs, il est grave sympa)). Rappel: self.timer permet de gérer la durée.
 
 ## Partie 2: src/maze.py src/utils.py
 
 ### src/maze.py
-Ici rien de très compliqué la génération du labyrinthe est donné, il manque la méthode **Maze.check_end** qui renvoie *False* s'il n'y a plus de point à récupérer dans le labyrinthe *True* sinon.
+Ici rien de très compliqué la génération du labyrinthe est donnée, il manque la méthode **Maze.check_end** qui renvoie *False* s'il n'y a plus de point à récupérer dans le labyrinthe *True* sinon.
 
 ### src/utils.py
 Ce fichier permet d'avoir 2-3 fonctions utiles au programme qui ne nécessite pas de fichier à part entière.
