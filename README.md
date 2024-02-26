@@ -61,16 +61,16 @@ La formule pour convertir les déplacements: index = vieux_x / taille_case
 
 Maintenant que vous avez prit vos marques, voici quelques fonctions que vous devez recoder afin de compléter le code du jeu:
 
-### PacMan.kill()
+#### PacMan.kill()
 Cette fonction sera appelée quand le Pac-Man est touché.\
 La Pacman perd 1 point de vie et il revient à la position de départ (donnée par self.start_pos()).
 
-### PacMan.eat()
+#### PacMan.eat()
 Cette fonction permet de manger les petits points blancs afin de gagner des points.\
 il faut donc d'abord vérifier si il y a un point à la position du Pacman (dans self.maze.point , voir plus haut) et augmenter le score.
 s'il s'agit d'un power up il faut mettre le Pac-Man en mode Power *True*.
 
-### PacMan.Power()
+#### PacMan.Power()
 Cette fonction doit permettre à Pac-Man de garder son powerup durant environ dix secondes. Pour ce faire vous pouvez utiliser la librairie time de python et de la fonction timer de cette librairie (demandez des précisions à Titouan si c'est flou (le grand avec des cheveux longs, il est grave sympa)). Rappel: self.timer permet de gérer la durée.
 
 ## Partie 2: src/maze.py src/utils.py
@@ -90,6 +90,6 @@ de plus la fonction renvoie *False* si la partie est finie, *True* sinon
 ### le mouvement
 De meme qu'avec pacman implementer les diferent methode de deplacement.
 
-### Ghost.action()
+#### Ghost.action()
 Implémentez une IA basique ou plus évoluent pour que les fantômes choisissent leurs prochains déplacements.
 Pour essayer votre code vous pouvez ajouter un déplacement aléatoire et ensuite chercher un déplacement plus fluide et intelligent
