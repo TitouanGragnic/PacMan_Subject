@@ -29,7 +29,13 @@ La carte se présente sous la forme de deux matrices:
 La première : self.maze.maze -> ce tableau est peuplé de 1 et de 0, les 1 sont des murs et les 0 sont des sols.
 ne vous laissez pas intimider par le terme matrice, c'est très simple: pour accéder à une case il suffit d'utiliser la synthaxe suivante:\
 prenons la case en i = 5 et en j = 7 dans le maze:
-self.maze.maze[7][5]\
+self.maze.maze[7][5]
+
+La deuxième matrice : self.maze.point -> ce tableau contient les points à manger pour le Pacman (2 pour les popwer-ups, 1 pour les point, 0 sinon).
+
+Point à savoir: votre Pacman possède des coordonnés(pos.x et pos.y) qui représente sa position à l'échelle des pixels.
+Vous devrez donc convertir ces coordonnées pour pouvoir lier les coordonnés du Pacman avec les matrices du maze (c'est à cela que sert self.size)
+
 (si vous n'êtes pas sûr d'avoir compris certaines notions, demandez nous, on ne mord pas)\
 
 Tous ces attributs sont des variables que vous devrez modifier pour faire fonctionner le jeu
