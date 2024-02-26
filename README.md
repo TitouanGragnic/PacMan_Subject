@@ -2,30 +2,51 @@
 
 Durant ce TP vous allez apprendre à :
   - manipuler les lists
- - les bases de la programmation orientaient objet
+ - les bases de la programmation orientée objet
  - Créer une IA
 
-Vous allez être amenés à utiliser la librairie python **pygame** pour ceci il vous faut travailler sur un shell ou la commande suivante a été exécuter :
+Vous allez être amenés à utiliser la librairie python **pygame** pour ceci il vous faut travailler sur un shell après avoir exécuter la commande suivante :
 
 ```sh
 nix-shell -p python311Packages.pygame
 ```
 
+Vos outils:
+
+Vous disposez d'une classe Pacman:
+les attributs que vous utiliserez sont:
+-self.size -> le nombre de pixel par case
+-self.speed -> la vitesse du Pacman
+-self.life -> les points de vie
+-self.dt -> le delta de temps (expliqué plus bas)
+-self.pos.x -> la position sur l'axe des abscisses
+-self.pos.y -> la position sur l'axe des ordonnées
+-self.score -> le score
+-self.power_up -> booléen indiquant si le power up est actif (booléen signifie que la variable peut être soit vrai ou fausse)
+-self.timer -> la durée de récupération du power up
+
 ## Partie 1: src/pacman.py
 
 ### Le mouvement
 
-ici nous vous proposons de diviser les différents mouvements en sous fonction pour la lisibilité du code (vous pouvez rajouter autant de sous fonction que vos desirers pour alléger le code)
+Pour commencer, voyons le mouvement. Vous allez devoir implementer le déplacement de Pacman dans 4 directions.
+Ici nous vous proposons de diviser les différents mouvements en sous fonction pour la lisibilité du code (vous pouvez rajouter autant de sous fonction que vous désirez pour alléger le code)
 
-pour adapter le mouvement à la fréquence d'image et que la puissance du PC ne modifie pas la rapidité du jeu nous utilisons une variable dt qui est un delta du temps permettant d'harmoniser la vitesse avec le temps.
+pour adapter le mouvement a la fréquence d'image et que la puissance du PC n'impact pas la rapidité du jeu nous utilisons une variable **dt** qui est un delta du temps permettant de synchroniser la fréquence d'image avec le temps qui s'écoule.
 
-pour utiliser ce dt il suffit de multiplier la variable ajoutée à votre position par dt comme ceci:
+pour utiliser ce delta, il suffit de multiplier la variable ajoutée à votre position par **dt** comme ceci:
 
 ```py
 self.pos.x += self.speed * self.dt
 ```
 
-**Il est important de vérifier si la case suivante est un mur ou non avant d'avancer!**
+Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonnées d'arrivé puis de mettre à jour la position du Pacman. De cette manière vous pourrez par la suite vérifier si votre position est valide ou non (pour les collisions avec les murs).
+
+La formule pour convertir les déplacements : nouveau_x = vieux_x / taille_case
+
+
+Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions.
+
 
 ### PacMan.kill()
 Cette fonction est appelée quand le Pac-Man est tu et doit réduire la vie de 1, réinitialiser la position à celle de départ.
