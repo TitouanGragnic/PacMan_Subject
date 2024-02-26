@@ -1,8 +1,8 @@
 # PacMan
 
 Durant ce TP vous allez apprendre à :
-  - manipuler les lists
- - les bases de la programmation orientée objet
+ - Les bases de la programmation orientée objet
+ - Manipuler les lists
  - Créer une IA
 
 Vous allez être amenés à utiliser la librairie python **pygame** pour ceci il vous faut travailler sur un shell après avoir exécuter la commande suivante :
