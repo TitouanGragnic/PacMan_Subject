@@ -13,10 +13,10 @@ nix-shell -p python311Packages.pygame
 
 ### Vos outils:
 
-Vous disposez d'une classe Pacman:
+Vous disposez d'une classe Pac-man:
 les attributs que vous utiliserez sont:\
 -self.size -> le nombre de pixel par case\
--self.speed -> la vitesse du Pacman\
+-self.speed -> la vitesse du Pac-man\
 -self.life -> les points de vie\
 -self.dt -> le delta de temps (expliqué plus bas)\
 -self.pos.x -> la position sur l'axe des abscisses\
@@ -31,20 +31,20 @@ ne vous laissez pas intimider par le terme matrice, c'est très simple: pour acc
 prenons la case en i = 5 et en j = 7 dans le maze:
 self.maze.maze[7][5]
 
-La deuxième matrice : self.maze.point -> ce tableau contient les points à manger pour le Pacman (2 pour les popwer-ups, 1 pour les point, 0 sinon).
+La deuxième matrice : self.maze.point -> ce tableau contient les points à manger pour le Pac-man (2 pour les popwer-ups, 1 pour les point, 0 sinon).
 
-Point à savoir: votre Pacman possède des coordonnés(pos.x et pos.y) qui représente sa position à l'échelle des pixels.
-Vous devrez donc convertir ces coordonnées pour pouvoir lier les coordonnés du Pacman avec les matrices du maze (c'est à cela que sert self.size)
+Point à savoir: votre Pac-man possède des coordonnés(pos.x et pos.y) qui représente sa position à l'échelle des pixels.
+Vous devrez donc convertir ces coordonnées pour pouvoir lier les coordonnés du Pac-man avec les matrices du maze (c'est à cela que sert self.size)
 
 (si vous n'êtes pas sûr d'avoir compris certaines notions, demandez nous, on ne mord pas)\
 
-Tous ces attributs sont des variables que vous devrez modifier pour faire fonctionner le jeu
+Tous ces attributs sont des variables que vous devrez modifier dans les fonctions à compléter pour faire fonctionner le jeu.
 
 ## Partie 1: src/pacman.py
 
 ### Le mouvement
 
-Pour commencer, voyons le mouvement. Vous allez devoir implementer le déplacement de Pacman dans 4 directions.
+Pour commencer, voyons le mouvement. Vous allez devoir implementer le déplacement de Pac-man dans 4 directions.
 Ici nous vous proposons de diviser les différents mouvements en sous fonction pour la lisibilité du code (vous pouvez rajouter autant de sous fonction que vous désirez pour alléger le code). Ici vous devrzez donc manipuler self.pos.x et self.pos.y.\
 Pour adapter le mouvement a la fréquence d'image et que la puissance du PC n'impact pas la rapidité du jeu nous utilisons une variable **dt** qui est un delta du temps permettant de synchroniser la fréquence d'image avec le temps qui s'écoule.
 
@@ -54,20 +54,20 @@ pour utiliser ce delta, il suffit de multiplier la variable ajoutée à votre po
 self.pos.x += self.speed * self.dt
 ```
 
-Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonnées d'arrivé puis de mettre à jour la position du Pacman. De cette manière vous pourrez par la suite vérifier si votre position est valide ou non (pour les collisions avec les murs).
+Tips: Pour gérer le mouvement, nous vous conseillons de calculer les coordonnées d'arrivé puis de mettre à jour la position du Pac-man. De cette manière vous pourrez par la suite vérifier si votre position est valide ou non (pour les collisions avec les murs).
 
-Une fois que votre Pacman peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions. Vous allez devoir utiliser self.maze.maze pour cela vous allez devoir convertir les coordonnées du pacman pour savoir où vous vous situez dans le labyrinthe.\
+Une fois que votre Pac-man peut se déplacer dans toutes les directions, vous allez pouvoir vous pencher sur les collisions. Vous allez devoir utiliser self.maze.maze pour cela vous allez devoir convertir les coordonnées du Pac-man pour savoir où vous vous situez dans le labyrinthe.\
 La formule pour convertir les déplacements: index = vieux_x / taille_case
 
 Maintenant que vous avez prit vos marques, voici quelques fonctions que vous devez recoder afin de compléter le code du jeu:
 
 #### PacMan.kill()
 Cette fonction sera appelée quand le Pac-Man est touché.\
-La Pacman perd 1 point de vie et il revient à la position de départ (donnée par self.start_pos()).
+La Pac-man perd 1 point de vie et il revient à la position de départ (donnée par self.start_pos()).
 
 #### PacMan.eat()
 Cette fonction permet de manger les petits points blancs afin de gagner des points.\
-il faut donc d'abord vérifier si il y a un point à la position du Pacman (dans self.maze.point , voir plus haut) et augmenter le score.
+il faut donc d'abord vérifier si il y a un point à la position du Pac-man (dans self.maze.point , voir plus haut) et augmenter le score.
 s'il s'agit d'un power up il faut mettre le Pac-Man en mode Power *True*.
 
 #### PacMan.Power()
@@ -82,14 +82,14 @@ Ici rien de très compliqué la génération du labyrinthe est donnée, il manqu
 Ce fichier permet d'avoir 2-3 fonctions utiles au programme qui ne nécessite pas de fichier à part entière.
 
 #### check_hitbox(player, gh)
-Test si le pacman est en collision avec un des fantômes et appele check event pour résoudre la collision et tuer l'un des deux
-de plus la fonction renvoie *False* si la partie est finie, *True* sinon
+Test si le Pac-man est en collision avec un des fantômes et appelle **check_event()** pour résoudre la collision et tuer l'un des deux.
+De plus la fonction renvoie *False* si la partie est finie, *True* sinon.
 
 ## Partie 3: ghost.py
 
 ### le mouvement
-De meme qu'avec pacman implementer les diferent methode de deplacement.
+De même qu'avec Pac-man vous devez implémenter les différentes méthodes de deplacements, si vous êtes arriver ici, vous n'avez pas besoin de plus d'explications.
 
 #### Ghost.action()
-Implémentez une IA basique ou plus évoluent pour que les fantômes choisissent leurs prochains déplacements.
-Pour essayer votre code vous pouvez ajouter un déplacement aléatoire et ensuite chercher un déplacement plus fluide et intelligent
+Implémentez une IA basique ou plus évolué pour que les fantômes déterminent leurs prochains déplacements.
+Pour commencer votre code vous pouvez ajouter un déplacement aléatoire et ensuite chercher un déplacement plus fluide et intelligent.
